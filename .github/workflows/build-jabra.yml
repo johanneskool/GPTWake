@@ -3,6 +3,7 @@ name: Build Jabra ChatGPT bridge
 on:
   push:
     branches:
+      - main
       - jabra-chatgpt-button
   workflow_dispatch:
 

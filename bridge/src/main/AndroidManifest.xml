@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <queries>
+        <package android:name="com.openai.chatgpt" />
+    </queries>
+
+    <application
+        android:allowBackup="false"
+        android:label="ChatGPT Headset Bridge"
+        android:theme="@style/Theme.Transparent">
+
+        <activity
+            android:name=".VoiceCommandActivity"
+            android:exported="true"
+            android:directBootAware="true"
+            android:showWhenLocked="true"
+            android:turnScreenOn="false"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:theme="@style/Theme.Transparent">
+            <intent-filter>
+                <action android:name="android.intent.action.VOICE_COMMAND" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

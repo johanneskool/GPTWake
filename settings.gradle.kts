@@ -14,3 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "GPTWake"
 include(":app")
+
+include(":bridge")

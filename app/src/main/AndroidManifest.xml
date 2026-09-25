@@ -42,6 +42,22 @@
             It never turns the screen on and finishes as soon as the service acknowledges.
         -->
         <activity
+            android:name=".VoiceCommandActivity"
+            android:exported="true"
+            android:directBootAware="true"
+            android:hardwareAccelerated="false"
+            android:showWhenLocked="true"
+            android:turnScreenOn="false"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:theme="@style/Theme.GPTWake.Transparent">
+            <intent-filter>
+                <action android:name="android.intent.action.VOICE_COMMAND" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".ShimActivity"
             android:exported="false"
             android:directBootAware="true"

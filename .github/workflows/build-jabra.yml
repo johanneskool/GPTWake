@@ -1,0 +1,42 @@
+name: Build Jabra ChatGPT bridge
+
+on:
+  push:
+    branches:
+      - main
+      - jabra-chatgpt-button
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Make Gradle wrapper executable
+        run: chmod +x gradlew
+
+      - name: Build bridge APK
+        env:
+          ANDROID_HOME: /usr/local/lib/android/sdk
+          ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+        run: ./gradlew --no-daemon --stacktrace :bridge:assembleDebug
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: ChatGPT-Headset-Bridge-debug
+          path: bridge/build/outputs/apk/debug/bridge-debug.apk
+          if-no-files-found: error
